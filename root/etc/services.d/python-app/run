@@ -1,0 +1,15 @@
+#!/command/with-contenv sh
+## PERMISSIONS
+source /etc/hluser
+chown -R $HL_USER_USERNAME:$HL_USER_USERNAME /app
+
+## RUN AS ROOT
+whoami
+
+## RUN AS HL_USER_USERNAME
+s6-setuidgid $HL_USER_USERNAME whoami
+cd /app/
+echo "python3 app.py"
+s6-setuidgid $HL_USER_USERNAME python3 app.py
+
+
