@@ -7,7 +7,7 @@ ADD root /
 WORKDIR /app
 
 RUN echo "**** install Python ****" && \
-    apk add --no-cache python3 py3-pip && \
+    apk add --no-cache python3 py3-pip py3-virtualenv && \
     if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
     \
     echo "**** install pip ****" && \
